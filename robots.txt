@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Preview build. Remove Disallow before production launch.
