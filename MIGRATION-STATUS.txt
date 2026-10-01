@@ -1,23 +1,46 @@
 DCPP DIGITAL · CLOUDFLARE MIGRATION STATUS
+==========================================
 
-PHASE 1 – PREVIEW: FERTIG
-- Jimdo-Pflichtvariablen entfernt
-- HTML/CSS/JS als statische Website strukturiert
-- bestehende Hash-Microsites erhalten
-- Digital Publishing erhalten
-- Kochheld erhalten
-- Payhip-/GitHub-/Social-Links bleiben erhalten
-- Cloudflare _headers vorbereitet
-- Preview robots/noindex abgesichert
-- 404-Seite vorbereitet
-- Impressum/Datenschutz im Preview auf Live-Jimdo weitergeleitet
+Stand: 2026-10-01
+Quelle: bestätigter DCPP Digital V1.6.7 Arbeitsstand
+Repository: Bratwurstmitmir/dcpp-digital-website
 
-REPOSITORY
-- GitHub: Bratwurstmitmir/dcpp-digital-website
-- Cloudflare-ready Build vorbereitet
+PHASE 1 · PREVIEW
+-----------------
+[OK] Eigenes GitHub-Repository angelegt
+[OK] Jimdo-<var>-Tags aus der statischen Preview entfernt
+[OK] HTML/CSS/JS für Cloudflare Pages vorbereitet
+[OK] Preview bleibt noindex / nofollow
+[OK] robots.txt blockiert Suchmaschinen während der Testphase
+[OK] _headers und _redirects vorbereitet
+[OK] Eigene 404-Seite vorhanden
+[OK] Build-Script rekonstruiert die Website nach dist/
+[OK] Problematischen CSS-Kompressionsblock in verifizierte Teilstücke zerlegt
+[OK] Automatische GitHub-Validierung angelegt
+[OK] Bestehende Jimdo-Live-Seite bleibt unangetastet
 
-PHASE 2 NACH PREVIEW-SAFE
-- Bilder lokal migrieren
-- echte Unterseiten statt Hash-Microsites
-- eigene Domain verbinden
-- SEO/robots/sitemap final aktivieren
+CLOUDFLARE PAGES KONFIGURATION
+------------------------------
+Framework preset: None
+Build command: sh build.sh
+Build output directory: dist
+
+NOCH NICHT LIVE AUSGEFÜHRT
+--------------------------
+[ ] Repository in Cloudflare Pages verbinden
+[ ] pages.dev Preview erzeugen
+[ ] Desktop-/Mobile-Prüfung der Cloudflare-Ausgabe
+[ ] Funktionsprüfung aller Hash-Microsites und Payhip-Links
+
+PHASE 2 · ERST NACH SAFE
+------------------------
+[ ] Jimdo-CDN-Bilder lokal in /assets/images/ übernehmen
+[ ] Hash-Microsites in echte Unterseiten aufteilen
+[ ] Eigenständige Impressum-/Datenschutzseiten
+[ ] dcpp-digital.de registrieren und verbinden
+[ ] Canonicals / Sitemap / robots für Livebetrieb
+[ ] Search Console / Indexierung
+
+WICHTIG
+-------
+Die bestehende Jimdo-Seite bleibt bis zur finalen Freigabe der Cloudflare-Version unverändert online.
