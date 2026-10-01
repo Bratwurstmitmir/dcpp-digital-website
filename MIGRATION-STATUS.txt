@@ -1,0 +1,23 @@
+DCPP DIGITAL · CLOUDFLARE MIGRATION STATUS
+
+PHASE 1 – PREVIEW: FERTIG
+- Jimdo-Pflichtvariablen entfernt
+- HTML/CSS/JS als statische Website strukturiert
+- bestehende Hash-Microsites erhalten
+- Digital Publishing erhalten
+- Kochheld erhalten
+- Payhip-/GitHub-/Social-Links bleiben erhalten
+- Cloudflare _headers vorbereitet
+- Preview robots/noindex abgesichert
+- 404-Seite vorbereitet
+- Impressum/Datenschutz im Preview auf Live-Jimdo weitergeleitet
+
+REPOSITORY
+- GitHub: Bratwurstmitmir/dcpp-digital-website
+- Cloudflare-ready Build vorbereitet
+
+PHASE 2 NACH PREVIEW-SAFE
+- Bilder lokal migrieren
+- echte Unterseiten statt Hash-Microsites
+- eigene Domain verbinden
+- SEO/robots/sitemap final aktivieren
