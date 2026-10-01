@@ -9,6 +9,13 @@ cat encoded/index/*.b64 \
   | gzip -d \
   > dist/index.html
 
+# Cloudflare darf keine Rechtslinks zurück zu Jimdo schicken.
+sed -i \
+  -e 's|https://dcpp.jimdofree.com/about/|/about/|g' \
+  -e 's|https://dcpp.jimdofree.com/j/privacy|/j/privacy|g' \
+  -e 's|Die nachfolgenden technischen Datenschutzhinweise werden von Jimdo entsprechend den auf dieser Webseite eingesetzten Funktionen bereitgestellt\.|Diese Vorschau wird technisch über Cloudflare Pages bereitgestellt. Vor dem produktiven Domainwechsel wird die Datenschutzerklärung auf die final eingesetzten Dienste und die eigene Domain abgestimmt.|g' \
+  dist/index.html
+
 cat \
   encoded/css/css.01.b64 \
   encoded/css/css.02.b64 \
@@ -25,6 +32,9 @@ cat \
   | base64 -d \
   | gzip -d \
   > dist/assets/css/site.css
+
+# Host-spezifische Cloudflare-Korrekturen bewusst separat halten.
+cat patches/cloudflare-host.css >> dist/assets/css/site.css
 
 cat encoded/js/*.b64 \
   | base64 -d \
