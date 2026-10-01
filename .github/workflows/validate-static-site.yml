@@ -29,6 +29,13 @@ jobs:
           test -s dist/robots.txt
           grep -qi 'noindex' dist/index.html
           grep -q 'DCPP' dist/index.html
+          grep -q '/about/' dist/index.html
+          grep -q '/j/privacy' dist/index.html
+          ! grep -q 'https://dcpp.jimdofree.com/about/' dist/index.html
+          ! grep -q 'https://dcpp.jimdofree.com/j/privacy' dist/index.html
+          grep -q 'html.dcpp-view-digitalpublishing #dcpp-footer' dist/assets/css/site.css
+          grep -q '^/about[[:space:]]\+/index.html[[:space:]]\+200' dist/_redirects
+          grep -q '^/j/privacy[[:space:]]\+/index.html[[:space:]]\+200' dist/_redirects
           echo "HTML bytes: $(wc -c < dist/index.html)"
           echo "CSS bytes:  $(wc -c < dist/assets/css/site.css)"
           echo "JS bytes:   $(wc -c < dist/assets/js/site.js)"
