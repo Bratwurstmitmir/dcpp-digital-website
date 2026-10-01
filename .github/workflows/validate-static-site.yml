@@ -21,6 +21,8 @@ jobs:
         run: |
           set -euo pipefail
           test -s dist/index.html
+          test -s dist/about/index.html
+          test -s dist/j/privacy/index.html
           test -s dist/assets/css/site.css
           test -s dist/assets/js/site.js
           test -s dist/404.html
@@ -30,12 +32,16 @@ jobs:
           grep -qi 'noindex' dist/index.html
           grep -q 'DCPP' dist/index.html
           grep -q '/about/' dist/index.html
-          grep -q '/j/privacy' dist/index.html
+          grep -q '/j/privacy/' dist/index.html
           ! grep -q 'https://dcpp.jimdofree.com/about/' dist/index.html
           ! grep -q 'https://dcpp.jimdofree.com/j/privacy' dist/index.html
+          grep -q 'dcpp-impressum-page' dist/about/index.html
+          grep -q 'dcpp-datenschutz-page' dist/j/privacy/index.html
           grep -q 'html.dcpp-view-digitalpublishing #dcpp-footer' dist/assets/css/site.css
-          grep -q '^/about[[:space:]]\+/index.html[[:space:]]\+200' dist/_redirects
-          grep -q '^/j/privacy[[:space:]]\+/index.html[[:space:]]\+200' dist/_redirects
-          echo "HTML bytes: $(wc -c < dist/index.html)"
-          echo "CSS bytes:  $(wc -c < dist/assets/css/site.css)"
-          echo "JS bytes:   $(wc -c < dist/assets/js/site.js)"
+          cmp -s dist/index.html dist/about/index.html
+          cmp -s dist/index.html dist/j/privacy/index.html
+          echo "HTML bytes:       $(wc -c < dist/index.html)"
+          echo "Impressum bytes:  $(wc -c < dist/about/index.html)"
+          echo "Datenschutz bytes:$(wc -c < dist/j/privacy/index.html)"
+          echo "CSS bytes:        $(wc -c < dist/assets/css/site.css)"
+          echo "JS bytes:         $(wc -c < dist/assets/js/site.js)"
