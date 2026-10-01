@@ -1,0 +1,15 @@
+/* DCPP Digital · Cloudflare Host Fixes
+   Host-spezifisch: Jimdo-Hauptfooter auf Hash-Microsites ausblenden.
+   Die jeweiligen Microsites besitzen eigene Footer. */
+
+html.dcpp-view-digitalpublishing #dcpp-footer,
+html.dcpp-view-3x3 #dcpp-footer,
+html.dcpp-view-sunny #dcpp-footer,
+html.dcpp-view-familie #dcpp-footer,
+html.dcpp-view-heymalle #dcpp-footer,
+html.dcpp-view-releasebuddy #dcpp-footer,
+html.dcpp-view-bottroperdoener #dcpp-footer,
+html.dcpp-view-bratwurstmitmir #dcpp-footer,
+html.dcpp-view-kochheld #dcpp-footer {
+  display: none !important;
+}
