@@ -2,7 +2,7 @@
 set -eu
 
 rm -rf dist
-mkdir -p dist/assets/css dist/assets/js
+mkdir -p dist/assets/css dist/assets/js dist/about dist/j/privacy
 
 cat encoded/index/*.b64 \
   | base64 -d \
@@ -12,7 +12,7 @@ cat encoded/index/*.b64 \
 # Cloudflare darf keine Rechtslinks zurück zu Jimdo schicken.
 sed -i \
   -e 's|https://dcpp.jimdofree.com/about/|/about/|g' \
-  -e 's|https://dcpp.jimdofree.com/j/privacy|/j/privacy|g' \
+  -e 's|https://dcpp.jimdofree.com/j/privacy|/j/privacy/|g' \
   -e 's|Die nachfolgenden technischen Datenschutzhinweise werden von Jimdo entsprechend den auf dieser Webseite eingesetzten Funktionen bereitgestellt\.|Diese Vorschau wird technisch über Cloudflare Pages bereitgestellt. Vor dem produktiven Domainwechsel wird die Datenschutzerklärung auf die final eingesetzten Dienste und die eigene Domain abgestimmt.|g' \
   dist/index.html
 
@@ -41,8 +41,16 @@ cat encoded/js/*.b64 \
   | gzip -d \
   > dist/assets/js/site.js
 
+# Die rechtlichen Bereiche sind bereits im DCPP-HTML enthalten und werden
+# anhand des Pfades durch site.js ein-/ausgeblendet. Physische index.html-
+# Dateien machen die Routen unabhängig von Cloudflare-Rewrite-Verhalten.
+cp dist/index.html dist/about/index.html
+cp dist/index.html dist/j/privacy/index.html
+
 cp 404.html _headers _redirects robots.txt dist/
 
 printf "DCPP Digital preview built: %s\n" "$(wc -c < dist/index.html) bytes HTML"
+printf "Impressum route: %s\n" "$(wc -c < dist/about/index.html) bytes"
+printf "Datenschutz route: %s\n" "$(wc -c < dist/j/privacy/index.html) bytes"
 printf "CSS: %s\n" "$(wc -c < dist/assets/css/site.css) bytes"
 printf "JS: %s\n" "$(wc -c < dist/assets/js/site.js) bytes"
