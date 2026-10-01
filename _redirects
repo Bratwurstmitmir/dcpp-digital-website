@@ -1,3 +1,4 @@
-/about          https://dcpp.jimdofree.com/about/ 302
-/about/         https://dcpp.jimdofree.com/about/ 302
-/j/privacy      https://dcpp.jimdofree.com/j/privacy 302
+/about          /index.html 200
+/about/         /index.html 200
+/j/privacy      /index.html 200
+/j/privacy/     /index.html 200
