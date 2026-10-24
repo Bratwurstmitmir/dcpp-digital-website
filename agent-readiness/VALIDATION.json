@@ -1,0 +1,166 @@
+{
+  "pages": 26,
+  "internal_links": 470,
+  "max_extracted_text_chars": 18099,
+  "errors": [],
+  "pages_measured": [
+    {
+      "path": "/",
+      "text_characters": 12003,
+      "html_bytes": 56896,
+      "h1": 1
+    },
+    {
+      "path": "/about/",
+      "text_characters": 718,
+      "html_bytes": 17296,
+      "h1": 1
+    },
+    {
+      "path": "/j/privacy/",
+      "text_characters": 8042,
+      "html_bytes": 24435,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/ristorante-pizzeria-la-rosa/",
+      "text_characters": 2235,
+      "html_bytes": 19464,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/blumen-boutique/",
+      "text_characters": 3186,
+      "html_bytes": 23069,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/3x3-home-fit/",
+      "text_characters": 1931,
+      "html_bytes": 19905,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/sunny-xxl-dogge/",
+      "text_characters": 1942,
+      "html_bytes": 20174,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/familienkreis/",
+      "text_characters": 1955,
+      "html_bytes": 19557,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/hey-malle/",
+      "text_characters": 1885,
+      "html_bytes": 19309,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/release-buddy/",
+      "text_characters": 1880,
+      "html_bytes": 19453,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/bottroper-doener-pizza/",
+      "text_characters": 1918,
+      "html_bytes": 19775,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/bratwurst-mit-mir/",
+      "text_characters": 1856,
+      "html_bytes": 19921,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/kochheld/",
+      "text_characters": 1959,
+      "html_bytes": 19483,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/olympia-bottrop/",
+      "text_characters": 2205,
+      "html_bytes": 19578,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/3x3-home-fit/ansehen/",
+      "text_characters": 11862,
+      "html_bytes": 34991,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/sunny-xxl-dogge/ansehen/",
+      "text_characters": 2408,
+      "html_bytes": 19055,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/familienkreis/ansehen/",
+      "text_characters": 4747,
+      "html_bytes": 20248,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/hey-malle/ansehen/",
+      "text_characters": 5180,
+      "html_bytes": 20303,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/release-buddy/ansehen/",
+      "text_characters": 6031,
+      "html_bytes": 21173,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/bottroper-doener-pizza/ansehen/",
+      "text_characters": 2798,
+      "html_bytes": 22185,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/bratwurst-mit-mir/ansehen/",
+      "text_characters": 7011,
+      "html_bytes": 27300,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/kochheld/ansehen/",
+      "text_characters": 3170,
+      "html_bytes": 14991,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/digital-publishing/",
+      "text_characters": 5773,
+      "html_bytes": 33513,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/ristorante-pizzeria-la-rosa/ansehen/",
+      "text_characters": 18099,
+      "html_bytes": 129636,
+      "h1": 1
+    },
+    {
+      "path": "/projekte/olympia-bottrop/ansehen/",
+      "text_characters": 7052,
+      "html_bytes": 39553,
+      "h1": 1
+    },
+    {
+      "path": "/sitemap/",
+      "text_characters": 1286,
+      "html_bytes": 2898,
+      "h1": 1
+    }
+  ],
+  "browser_visual_qa": "pending; browser executable unavailable and cloud browser cannot reach localhost",
+  "deployment_status": "not deployed; existing Jimdo live site unchanged"
+}

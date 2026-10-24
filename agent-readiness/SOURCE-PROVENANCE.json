@@ -1,0 +1,14 @@
+{
+  "html(10).txt": {
+    "sha256": "d03718c5819b333d4b56c7acdef97e9980c45fd89daa14c59f04bc4581a042ed",
+    "size_bytes": 905812
+  },
+  "css(10).txt": {
+    "sha256": "52d166feb57ae069ea9ccc0c6c866fab836aa3ac52d264be58bf6e847787c76f",
+    "size_bytes": 997282
+  },
+  "head(9).txt": {
+    "sha256": "70fbe24caa9067a307d6a457cefd6baf3726a12ecbbef6d1346d96deed8c1a52",
+    "size_bytes": 129980
+  }
+}
