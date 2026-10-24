@@ -77,3 +77,25 @@ test('clean sitemap advertises current query projects and excludes legacy templa
  const response=await createHandler(async()=>origin())(req('/sitemap.xml','application/xml'),ENV);assert.equal(response.status,200);assert.match(response.headers.get('Content-Type'),/^application\/xml/);
  const xml=await response.text();assert.match(xml,/<loc>https:\/\/www\.dcpp-digital\.de\/\?projekt=3x3-home-fit<\/loc>/);assert.doesNotMatch(xml,/\/kurse\/|\/kontakt\/|\/über-uns\/|\/projekte\//);assert.equal((xml.match(/<url>/g)||[]).length,14);
 });
+test('session cookies, preview queries and encoded editor paths pass through',async()=>{
+ for(const request of [req('/','text/markdown','GET',{Cookie:'session=private'}),req('/?cmsEdit=1','text/markdown'),req('/?preview=true','text/markdown'),req('/?token=test-only','text/markdown'),req('/%61pp/settings','text/markdown')]){
+  const original=origin();let seen;const result=await createHandler(async r=>(seen=r,original))(request,ENV);
+  assert.equal(seen,request);assert.equal(result,original);
+ }
+ const publicCookie=await createHandler(async()=>origin())(req('/','text/markdown','GET',{Cookie:'__cf_bm=public-bot-cookie'}),ENV);
+ assert.match(publicCookie.headers.get('Content-Type'),/^text\/markdown/);
+});
+test('private, authenticated and attachment responses are never replaced',async()=>{
+ for(const headers of [{'Cache-Control':'private, max-age=0'},{'WWW-Authenticate':'Basic realm="test"'},{'Content-Disposition':'attachment; filename="download.html"'}]){
+  const response=new Response('private data',{headers:{'Content-Type':'text/html',...headers}});
+  assert.equal(await createHandler(async()=>response)(req('/','text/markdown'),ENV),response);
+ }
+});
+test('Markdown responses never relax the origin no-store restriction',async()=>{
+ const result=await createHandler(async()=>new Response('public site',{headers:{'Content-Type':'text/html','Cache-Control':'no-cache, no-store, must-revalidate'}}))(req('/','text/markdown'),ENV);
+ assert.equal(result.headers.get('Cache-Control'),'private, no-store');
+});
+test('an HTML conditional 304 still declares the negotiated variant',async()=>{
+ const response=await createHandler(async()=>new Response(null,{status:304,headers:{ETag:'"html"',Vary:'Accept-Encoding'}}))(req('/','text/html','GET',{'If-None-Match':'"html"'}),ENV);
+ assert.equal(response.status,304);assert.equal(response.headers.get('ETag'),'"html"');assert.equal(response.headers.get('Vary'),'Accept-Encoding, Accept');
+});

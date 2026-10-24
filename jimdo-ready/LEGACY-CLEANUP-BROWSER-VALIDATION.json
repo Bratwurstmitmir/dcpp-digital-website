@@ -1,0 +1,58 @@
+{
+  "fixture": "complete V6.7.13 HTML before/after actual local workerd HTMLRewriter; no live deployment",
+  "browser": "Chromium 131.0.6778.33",
+  "comparisons": 10,
+  "page_errors": [],
+  "results": [
+    {
+      "path": "/",
+      "width": 1440,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=blumen-boutique",
+      "width": 1440,
+      "identical": true
+    },
+    {
+      "path": "/#larosabottrop",
+      "width": 1440,
+      "identical": true
+    },
+    {
+      "path": "/#olympiabottrop",
+      "width": 1440,
+      "identical": true
+    },
+    {
+      "path": "/j/privacy",
+      "width": 1440,
+      "identical": true
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=blumen-boutique",
+      "width": 390,
+      "identical": true
+    },
+    {
+      "path": "/#larosabottrop",
+      "width": 390,
+      "identical": true
+    },
+    {
+      "path": "/#olympiabottrop",
+      "width": 390,
+      "identical": true
+    },
+    {
+      "path": "/j/privacy",
+      "width": 390,
+      "identical": true
+    }
+  ]
+}

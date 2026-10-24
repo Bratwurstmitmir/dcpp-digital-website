@@ -1,9 +1,11 @@
 name = "dcpp-jimdo-agentic-review"
 main = "edge-worker.mjs"
-compatibility_date = "2026-10-24"
+compatibility_date = "2026-07-30"
 workers_dev = false
 
 # No production routes or credentials are included.
 # This is intentionally a disabled review configuration.
 [vars]
 AGENTIC_ENABLED = "0"
+# Additional opt-in. Removes only the legacy containers already removed by JS.
+CLEAN_LEGACY_HTML = "0"

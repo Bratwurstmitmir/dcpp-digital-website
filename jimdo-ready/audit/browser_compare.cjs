@@ -2,9 +2,7 @@ const fs=require('fs'),path=require('path'),util=require('util'),cp=require('chi
 const execFile=util.promisify(cp.execFile);
 const {chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright');
 const root=path.resolve(__dirname,'..');
-const sourcePath=kind=>path.join(root,'source',fs.readdirSync(path.join(root,'source')).find(f=>f.includes('-'+kind+'-')));
-const candidatePath=kind=>path.join(root,'candidate',fs.readdirSync(path.join(root,'candidate')).find(f=>f.includes('-'+kind+'-')));
-const inputs=Object.fromEntries(['baseline','candidate'].map(mode=>[mode,Object.fromEntries(['HTML','CSS','HEAD'].map(kind=>[kind,fs.readFileSync(mode==='baseline'?sourcePath(kind):candidatePath(kind),'utf8')]))]));
+const {markup}=require('./fixture_markup.cjs');
 const paths=['/','/?projekt=blumen-boutique','/?projekt=3x3-home-fit','/?projekt=sunny-xxl-dogge','/?projekt=familienkreis','/?projekt=hey-malle','/?projekt=release-buddy','/?projekt=bottroper-doener-pizza','/?projekt=bratwurst-mit-mir','/?projekt=kochheld','/?projekt=ristorante-pizzeria-la-rosa','/?projekt=olympia-bottrop','/?projekt=digital-publishing','/#3x3homefit','/#sunnyxxl','/#familienkreis','/#heymalle','/#releasebuddy','/#bottroperdoener','/#bratwurstmitmir','/#Kochheld','/#larosabottrop','/#olympiabottrop','/#digitalpublishing','/about/','/j/privacy'];
 const shotPaths=new Set(['/','/?projekt=blumen-boutique','/?projekt=digital-publishing','/#larosabottrop','/#olympiabottrop','/#sunnyxxl','/j/privacy']);
 const assets=new Map(),failures=[];let active=0;const queue=[];
@@ -15,15 +13,11 @@ async function fetchAsset(url){
  }));
  return assets.get(url);
 }
-function markup(mode){
- const v=inputs[mode];let body=v.HTML.replace(/<var>navigation<\/var>/g,'<nav data-container="navigation"><a href="/kurse/">Kurse</a></nav>').replace(/<var>(?:sidebar|footer)<\/var>/g,'').replace(/<var>content<\/var>/g,'<div id="legacy-yoga-probe"><h1>Mind.</h1><p>Yoga-Begeisterte und Kurse: ungenutzter nativer Jimdo-Inhalt.</p></div>');
- return '<!doctype html><html lang="de-DE"><head><meta charset="utf-8"><title>Webdesign, Apps &amp; Publishing aus Bottrop - DCPP Digital</title>'+v.HEAD+'<style>'+v.CSS+'</style></head><body><div id="cc-inner" class="cc-content-parent">'+body+'</div></body></html>';
-}
-async function context(browser,mode,width){
+async function context(browser,mode,width,overrideMarkup){
  const c=await browser.newContext({viewport:{width,height:900},locale:'de-DE',timezoneId:'Europe/Berlin',reducedMotion:'reduce'});
  await c.route('**/*',async route=>{
   const request=route.request(),url=new URL(request.url());
-  if(url.hostname==='www.dcpp-digital.de')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:markup(mode)});
+  if(url.hostname==='www.dcpp-digital.de')return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:overrideMarkup?overrideMarkup(url):markup(mode)});
   if(['image','font','stylesheet'].includes(request.resourceType())){
    try{const asset=await fetchAsset(request.url());if(asset.path)return route.fulfill({status:200,contentType:asset.type,body:fs.readFileSync(asset.path)});failures.push(asset);}catch(e){failures.push({error:String(e),url:request.url()});}
    return route.fulfill({status:404,contentType:'text/plain',body:'Asset unavailable in audit fixture'});
@@ -74,5 +68,5 @@ async function main(){
  if(pageErrors.length)throw new Error('JavaScript page errors: '+JSON.stringify(pageErrors));
  console.log('BROWSER_COMPARISON_PASSED '+JSON.stringify({comparisons:results.length,screenshot_pairs:screenshots,asset_failures:output.asset_failures.length}));
 }
-module.exports={context,readState};
+module.exports={context,readState,markup};
 if(require.main===module)main().catch(e=>{console.error(e);process.exit(1)});

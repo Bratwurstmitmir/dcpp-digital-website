@@ -1,0 +1,10 @@
+{
+  "fixture": "full V6.7.13 before/after actual local workerd HTMLRewriter",
+  "comparison": "all element names, attributes, text, tails and child order",
+  "intentional_removals": [
+    "#dcpp-jimdo-page-content",
+    "#dcpp-jimdo-required [data-container=\"navigation\"]"
+  ],
+  "all_other_dom_identical": true,
+  "live_domain_integration": false
+}

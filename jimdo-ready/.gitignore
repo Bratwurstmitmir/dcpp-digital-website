@@ -6,3 +6,6 @@ audit/browser1148/
 audit/chromium-1148.zip
 audit/screens/
 audit/*.png
+audit/edge-cleaned-fixture.html
+audit/final-live/
+LIVE-ACCEPTANCE-*.json

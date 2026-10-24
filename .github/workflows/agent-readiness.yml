@@ -24,5 +24,11 @@ jobs:
         run: python3 jimdo-ready/compile_edge.py
       - name: Validate machine-readable supplements
         run: python3 jimdo-ready/verify_machine_docs.py
-      - name: Verify HTTP behavior and unchanged HTML forwarding
+      - name: Verify HTTP behavior, session bypass and unchanged HTML forwarding
         run: node --test jimdo-ready/edge.test.mjs
+      - name: Verify acceptance checker rejects incomplete HTTP fixes
+        run: python3 -m unittest discover -s jimdo-ready -p test_verify_live.py
+      - name: Install pinned local Workers test runtime
+        run: npm ci --prefix jimdo-ready/audit/tooling
+      - name: Exercise actual Workers runtime and HTMLRewriter without deployment
+        run: node jimdo-ready/audit/edge_runtime.cjs

@@ -1,5 +1,5 @@
 // Optional Workers Route in front of the existing Jimdo origin.
-// No HTML content is rewritten and no site migration is performed.
+// HTML stays unchanged unless the separate legacy-cleanup switch is enabled.
 const PAGES = __PAGES__;
 const LLMS = __LLMS__;
 const SITEMAP = __SITEMAP__;
@@ -34,9 +34,37 @@ function mdHeaders(upstream,canonical){
  for(const name of ['Content-Length','Content-Encoding','Transfer-Encoding','ETag','Last-Modified','Content-Range','Accept-Ranges','Content-MD5','Digest','Content-Digest','Repr-Digest'])headers.delete(name);
  headers.set('Content-Type','text/markdown; charset=utf-8');
  headers.set('X-Content-Type-Options','nosniff');
- headers.set('Cache-Control','private, no-cache');
+ headers.set('Cache-Control','private, no-store');
  if(canonical)headers.set('Link','<'+canonical+'>; rel="canonical"');
  return headers;
+}
+function hasSession(request,url){
+ // Cloudflare bot cookies are public infrastructure. Any other cookie, an
+ // Authorization header or an editor/preview query keeps the exact origin path.
+ if(request.headers.has('Authorization'))return true;
+ const cookies=(request.headers.get('Cookie')||'').split(';').map(v=>v.trim()).filter(Boolean);
+ if(cookies.some(v=>!['__cf_bm','_cfuvid','cf_clearance'].includes(v.split('=',1)[0])))return true;
+ return [...url.searchParams.keys()].some(k=>/^(?:cms(?:edit)?|preview|edit|jimdo|__jimdo|password|token|session|login)$/i.test(k));
+}
+function privateResponse(response){
+ return /(?:^|,)\s*private(?:\s|,|$)/i.test(response.headers.get('Cache-Control')||'')||response.headers.has('WWW-Authenticate')||response.headers.has('Content-Disposition');
+}
+function bodyHeaders(upstream){
+ const headers=vary(new Headers(upstream.headers));
+ for(const name of ['Content-Length','Content-Encoding','Transfer-Encoding','ETag','Last-Modified','Content-Range','Accept-Ranges','Content-MD5','Digest','Content-Digest','Repr-Digest'])headers.delete(name);
+ headers.set('Cache-Control','private, no-store');
+ return headers;
+}
+export function cleanupLegacyHtml(upstream,Rewriter=globalThis.HTMLRewriter){
+ // Match the exact two containers already removed by the approved site's JS.
+ // No visible project, legal text, footer, mandatory placeholder or script is
+ // selected. With no Workers HTMLRewriter available this stays a passthrough.
+ if(typeof Rewriter!=='function')return upstream;
+ const rewritten=new Rewriter()
+  .on('#dcpp-jimdo-page-content',{element(element){element.remove();}})
+  .on('#dcpp-jimdo-required [data-container="navigation"]',{element(element){element.remove();}})
+  .transform(upstream);
+ return new Response(rewritten.body,{status:upstream.status,statusText:upstream.statusText,headers:bodyHeaders(upstream)});
 }
 function markdownError(request,status,upstream){
  const missing=status===404;
@@ -56,9 +84,9 @@ export function createHandler(originFetch=fetch){
   if(!HOSTS.has(url.hostname))return new Response('This route is only configured for DCPP Digital.',{status:404});
   const enabled=env.AGENTIC_ENABLED==='1';
   const publicMethod=['GET','HEAD'].includes(request.method);
-  const administrative=/^\/(?:app(?:\/|$)|login(?:\/|$)|logout(?:\/|$)|\.well-known\/acme-challenge(?:\/|$))/.test(url.pathname)||(/^\/j\//.test(url.pathname)&&!/^\/j\/privacy\/?$/.test(url.pathname));
-  if(!enabled||!publicMethod||administrative||request.headers.has('Authorization'))return originFetch(request);
   let decodedPath;try{decodedPath=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';}catch{decodedPath=url.pathname;}
+  const administrative=/^\/(?:app(?:\/|$)|login(?:\/|$)|logout(?:\/|$)|\.well-known\/acme-challenge(?:\/|$))/i.test(decodedPath)||(/^\/j\//i.test(decodedPath)&&!/^\/j\/privacy\/?$/i.test(decodedPath));
+  if(!enabled||!publicMethod||administrative||hasSession(request,url))return originFetch(request);
   if(Object.hasOwn(LEGACY,decodedPath))return new Response(null,{status:301,headers:{Location:LEGACY[decodedPath],'Cache-Control':'public, max-age=300'}});
   if(url.pathname==='/sitemap.xml')return new Response(request.method==='HEAD'?null:SITEMAP,{status:200,headers:{'Content-Type':'application/xml; charset=utf-8','X-Content-Type-Options':'nosniff','Cache-Control':'public, max-age=300'}});
   if(['/llms.txt','/agent-instructions.md'].includes(url.pathname)){
@@ -74,9 +102,13 @@ export function createHandler(originFetch=fetch){
    originRequest=new Request(request,{headers,redirect:'manual'});
   }
   const upstream=await originFetch(originRequest);
+  if(privateResponse(upstream))return upstream;
   // Origin truth is retained: redirects, 404s and errors are never turned into
   // a successful canned homepage. All HTML bodies remain byte-for-byte intact.
-  if(upstream.status>=300&&upstream.status<400)return upstream;
+  if(upstream.status>=300&&upstream.status<400){
+   if(upstream.status!==304)return upstream;
+   return new Response(null,{status:304,headers:vary(new Headers(upstream.headers))});
+  }
   const type=upstream.headers.get('Content-Type')||'';
   if(md&&upstream.status===404){await upstream.body?.cancel().catch(()=>{});return markdownError(request,404,upstream);}
   if(md&&upstream.status>=500){await upstream.body?.cancel().catch(()=>{});return markdownError(request,upstream.status,upstream);}
@@ -85,6 +117,8 @@ export function createHandler(originFetch=fetch){
    await upstream.body?.cancel().catch(()=>{});
    return new Response(request.method==='HEAD'?null:page.markdown,{status:200,headers:mdHeaders(upstream,page.canonical)});
   }
+  const cleanupPath=keyFor(url)==='/'||keyFor(url).startsWith('?projekt=')||keyFor(url)==='/olympia-bottrop';
+  if(!md&&page&&cleanupPath&&env.CLEAN_LEGACY_HTML==='1'&&upstream.status===200&&/^text\/html(?:;|$)/i.test(type)&&request.method==='GET')return cleanupLegacyHtml(upstream);
   if(/^text\/(?:html|markdown)(?:;|$)/i.test(type)){
    const headers=vary(new Headers(upstream.headers));
    return new Response(upstream.body,{status:upstream.status,statusText:upstream.statusText,headers});
