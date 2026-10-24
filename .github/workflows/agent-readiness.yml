@@ -1,0 +1,28 @@
+name: Validate Jimdo agent readiness preparation
+
+on:
+  pull_request:
+    paths: ['jimdo-ready/**', '.github/workflows/agent-readiness.yml']
+  push:
+    branches: ['fix/agent-readiness-2026-10-24']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile optional origin-preserving adapter
+        run: python3 jimdo-ready/compile_edge.py
+      - name: Validate machine-readable supplements
+        run: python3 jimdo-ready/verify_machine_docs.py
+      - name: Verify HTTP behavior and unchanged HTML forwarding
+        run: node --test jimdo-ready/edge.test.mjs

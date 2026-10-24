@@ -1,0 +1,20 @@
+{
+  "version": "V6.7.12 frozen",
+  "files": [
+    {
+      "filename": "DCPP-Digital-CSS-V6.7.12-UNVERAENDERT-1zu1.txt",
+      "bytes": 969398,
+      "sha256": "2a9aab02d0ecd6acf5456265e53d016492fb2ed2fa799e7175f5c0c2bb969635"
+    },
+    {
+      "filename": "DCPP-Digital-HEAD-V6.7.12-UNVERAENDERT-1zu1.txt",
+      "bytes": 128163,
+      "sha256": "b4d69783f7888b051d6ed833060ad09b067036bce9e6f3ae569069e61c2e957f"
+    },
+    {
+      "filename": "DCPP-Digital-HTML-V6.7.12-KINDER-TEXTE-1zu1.txt",
+      "bytes": 893502,
+      "sha256": "c16f23524008fab58a533185d9ba50b7d6ba958ba1fb95af49143d1dc4dc6d00"
+    }
+  ]
+}
