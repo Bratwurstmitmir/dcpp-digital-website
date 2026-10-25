@@ -1,0 +1,11 @@
+{
+  "method": "Independent lxml parser, normalized HTML text excluding script/style/noscript/template/svg; all CSS-hidden ordinary HTML remains counted.",
+  "not_an_ora_score": true,
+  "native_jimdo_content_was_not_available_in_the_export": true,
+  "extracted_characters": {
+    "source": 118626,
+    "candidate": 44915
+  },
+  "native_yoga_cleanup_not_claimed": true,
+  "raw_html_is_larger": true
+}

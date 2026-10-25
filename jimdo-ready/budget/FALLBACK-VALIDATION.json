@@ -1,0 +1,80 @@
+{
+  "browser": "Chromium 131.0.6778.33",
+  "checks": 13,
+  "comparisons": [
+    {
+      "case": "visible content without JavaScript",
+      "width": 1440,
+      "path": "/",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 1440,
+      "path": "/?projekt=blumen-boutique",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 1440,
+      "path": "/#3x3homefit",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 1440,
+      "path": "/about/",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 1440,
+      "path": "/j/privacy",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 390,
+      "path": "/",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 390,
+      "path": "/?projekt=blumen-boutique",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 390,
+      "path": "/#3x3homefit",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 390,
+      "path": "/about/",
+      "identical": true
+    },
+    {
+      "case": "visible content without JavaScript",
+      "width": 390,
+      "path": "/j/privacy",
+      "identical": true
+    },
+    {
+      "case": "Jimdo CDATA wrapper around JSON",
+      "passed": true
+    },
+    {
+      "case": "damaged installation recovers to readable business page",
+      "path": "/#larosabottrop",
+      "passed": true
+    },
+    {
+      "case": "damaged installation recovers to readable business page",
+      "path": "/?projekt=digital-publishing",
+      "passed": true
+    }
+  ]
+}

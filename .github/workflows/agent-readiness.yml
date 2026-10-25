@@ -28,6 +28,10 @@ jobs:
         run: node --test jimdo-ready/edge.test.mjs
       - name: Verify acceptance checker rejects incomplete HTTP fixes
         run: python3 -m unittest discover -s jimdo-ready -p test_verify_live.py
+      - name: Verify safe packaging of inactive demo panels
+        run: python3 -m unittest discover -s jimdo-ready/budget -p test_budget.py
+      - name: Check demo restoration JavaScript syntax
+        run: node --check jimdo-ready/budget/panel-restore.js
       - name: Install pinned local Workers test runtime
         run: npm ci --prefix jimdo-ready/audit/tooling
       - name: Exercise actual Workers runtime and HTMLRewriter without deployment
