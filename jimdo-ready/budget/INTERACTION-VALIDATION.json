@@ -1,0 +1,26 @@
+{
+  "steps": 14,
+  "modes": [
+    "baseline",
+    "candidate"
+  ],
+  "all_identical": true,
+  "validated": [
+    "Webprojekte aufklappen",
+    "Projektkarte öffnen",
+    "La Rosa Gerichtsuche",
+    "La Rosa Bestellzettel",
+    "La Rosa Kategorie wechseln",
+    "La Rosa Karte laden und entfernen",
+    "Olympia mobiles Menü",
+    "Olympia Speisekarte und Filter",
+    "Olympia Karte laden und entfernen",
+    "Sunny mobiles Menü",
+    "FAQ aufklappen",
+    "Zurück zum Seitenanfang",
+    "Impressum",
+    "Datenschutz"
+  ],
+  "additional_candidate_legacy_redirects": 3,
+  "note": "Visible images are decoded before comparing full-page geometry. The scroll-dependent floating button is hidden only for stable content snapshots; its actual click-to-top behavior is separately tested after scrolling to 900px. Map frames are fixtures; no live maps, bookings, purchases or phone calls were triggered."
+}

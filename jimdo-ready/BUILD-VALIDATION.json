@@ -1,0 +1,39 @@
+{
+  "version": "V6.7.13-AGENTIC-PRUEFFASSUNG",
+  "source_version": "V6.7.12",
+  "html_structure_preserved": true,
+  "all_links_preserved": true,
+  "all_ids_preserved": true,
+  "jimdo_placeholders_preserved": true,
+  "native_legacy_content_container_preserved": true,
+  "html_text_budget_solved": false,
+  "legacy_redirect_fixed": {
+    "path": "/über-uns/",
+    "old_target": "/#dcpp-about",
+    "new_target": "/",
+    "reason": "dcpp-about does not exist in the frozen source"
+  },
+  "notes": [
+    "Formatting reduction is not a reduction of extracted content.",
+    "The original Jimdo content placeholder is retained; native Yoga remnants still require source cleanup.",
+    "Markdown negotiation and Markdown 404 require the optional server layer."
+  ],
+  "files": {
+    "HTML": {
+      "before_bytes": 893502,
+      "after_bytes": 553220,
+      "source_sha256": "c16f23524008fab58a533185d9ba50b7d6ba958ba1fb95af49143d1dc4dc6d00"
+    },
+    "CSS": {
+      "before_bytes": 969398,
+      "after_bytes": 584537,
+      "source_sha256": "2a9aab02d0ecd6acf5456265e53d016492fb2ed2fa799e7175f5c0c2bb969635"
+    },
+    "HEAD": {
+      "before_bytes": 128163,
+      "after_bytes": 109400
+    }
+  },
+  "javascript_asts_unchanged": 19,
+  "css_ast_unchanged": true
+}

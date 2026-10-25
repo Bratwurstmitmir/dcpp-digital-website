@@ -1,0 +1,10 @@
+source/
+candidate/
+PANELS.json
+audit/tooling/
+audit/asset-cache/
+audit/browser1148/
+audit/screens/
+audit/*diagnostic*
+audit/*snapshots*
+__pycache__/

@@ -1,0 +1,62 @@
+{
+  "pairs": 14,
+  "all_pixel_identical": true,
+  "results": [
+    {
+      "pair": "1440-00",
+      "identical": true
+    },
+    {
+      "pair": "1440-01",
+      "identical": true
+    },
+    {
+      "pair": "1440-12",
+      "identical": true
+    },
+    {
+      "pair": "1440-14",
+      "identical": true
+    },
+    {
+      "pair": "1440-21",
+      "identical": true
+    },
+    {
+      "pair": "1440-22",
+      "identical": true
+    },
+    {
+      "pair": "1440-25",
+      "identical": true
+    },
+    {
+      "pair": "390-00",
+      "identical": true
+    },
+    {
+      "pair": "390-01",
+      "identical": true
+    },
+    {
+      "pair": "390-12",
+      "identical": true
+    },
+    {
+      "pair": "390-14",
+      "identical": true
+    },
+    {
+      "pair": "390-21",
+      "identical": true
+    },
+    {
+      "pair": "390-22",
+      "identical": true
+    },
+    {
+      "pair": "390-25",
+      "identical": true
+    }
+  ]
+}

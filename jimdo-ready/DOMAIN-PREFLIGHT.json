@@ -1,0 +1,40 @@
+{
+  "checked_on": "2026-10-24",
+  "method": "public DNS answers from Google DNS-over-HTTPS, read-only",
+  "domain": "dcpp-digital.de",
+  "nameservers": [
+    "ns13.jimdo.com.",
+    "ns14.jimdo.com."
+  ],
+  "web_ipv4": [
+    "162.159.128.70",
+    "162.159.129.70"
+  ],
+  "www_ipv4": [
+    "162.159.128.70",
+    "162.159.129.70"
+  ],
+  "mail_exchangers": [
+    {
+      "priority": 10,
+      "host": "mx1.jimdo.com."
+    },
+    {
+      "priority": 20,
+      "host": "mx2.jimdo.com."
+    }
+  ],
+  "findings": [
+    "The authoritative DNS is Jimdo; provider-side Cloudflare IPs and headers do not prove a user-managed Cloudflare zone.",
+    "A normal Workers Route needs control of the matching active zone and a proxied DNS record.",
+    "The mail exchangers also point to Jimdo. No DNS or nameserver change was attempted.",
+    "A free full-zone setup would require a separately reviewed nameserver and complete DNS migration. A partial CNAME setup is not available on Cloudflare Free or Pro.",
+    "The registrar, account access, complete DNS zone, DNSSEC and origin-proxy compatibility are not established by these public answers."
+  ],
+  "deployment_performed": false,
+  "sources": [
+    "https://developers.cloudflare.com/workers/configuration/routing/routes/",
+    "https://developers.cloudflare.com/dns/zone-setups/partial-setup/",
+    "https://help.jimdo.com/hc/en-us/articles/115005533983-Connect-an-External-Domain-to-Your-Jimdo-Website-via-Nameservers"
+  ]
+}

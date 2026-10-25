@@ -1,0 +1,38 @@
+{
+  "runtime": "Cloudflare workerd via Miniflare 4.20260730.0",
+  "compatibility_date_tested": "2026-07-30",
+  "production_compatibility_date": "2026-07-30",
+  "fixture": "complete V6.7.13 Jimdo layout",
+  "integration": "local fixture only; no real Jimdo domain, DNS or account deployment",
+  "results": [
+    {
+      "case": "HTML without cleanup is byte-identical",
+      "passed": true
+    },
+    {
+      "case": "native HTMLRewriter removes only the two legacy containers",
+      "passed": true,
+      "removed_bytes": 317
+    },
+    {
+      "case": "legal and unknown pages retain their complete origin HTML",
+      "passed": true
+    },
+    {
+      "case": "disabled, editor and session requests bypass the adapter",
+      "passed": true
+    },
+    {
+      "case": "canonical homepage negotiates actual Markdown",
+      "passed": true
+    },
+    {
+      "case": "real 404 produces a Markdown recovery body",
+      "passed": true
+    },
+    {
+      "case": "HEAD negotiates metadata without a response body",
+      "passed": true
+    }
+  ]
+}

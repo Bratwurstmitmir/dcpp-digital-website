@@ -1,0 +1,20 @@
+{
+  "version": "V6.7.13 AGENTIC Prüffassung",
+  "files": [
+    {
+      "filename": "DCPP-Digital-CSS-V6.7.13-AGENTIC-PRUEFFASSUNG-1zu1.txt",
+      "bytes": 584537,
+      "sha256": "65f5a1e0d57401251cb0c5db037c9ae96ac36ef537367e90b9cf8da1143d6b83"
+    },
+    {
+      "filename": "DCPP-Digital-HEAD-V6.7.13-AGENTIC-PRUEFFASSUNG-1zu1.txt",
+      "bytes": 109400,
+      "sha256": "ea341e2fdff8a77091822ef7de0c53fcd9d892eeb64cbb793a9b7f83685bfd96"
+    },
+    {
+      "filename": "DCPP-Digital-HTML-V6.7.13-AGENTIC-PRUEFFASSUNG-1zu1.txt",
+      "bytes": 553220,
+      "sha256": "b47a8f10a21254aeb916761496af84e46a7a58ae97de4786e30c16debb8e8981"
+    }
+  ]
+}

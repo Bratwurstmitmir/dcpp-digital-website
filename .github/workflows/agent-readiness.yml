@@ -1,0 +1,38 @@
+name: Validate Jimdo agent readiness preparation
+
+on:
+  pull_request:
+    paths: ['jimdo-ready/**', '.github/workflows/agent-readiness.yml']
+  push:
+    branches: ['fix/agent-readiness-2026-10-24']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile optional origin-preserving adapter
+        run: python3 jimdo-ready/compile_edge.py
+      - name: Validate machine-readable supplements
+        run: python3 jimdo-ready/verify_machine_docs.py
+      - name: Verify HTTP behavior, session bypass and unchanged HTML forwarding
+        run: node --test jimdo-ready/edge.test.mjs
+      - name: Verify acceptance checker rejects incomplete HTTP fixes
+        run: python3 -m unittest discover -s jimdo-ready -p test_verify_live.py
+      - name: Verify safe packaging of inactive demo panels
+        run: python3 -m unittest discover -s jimdo-ready/budget -p test_budget.py
+      - name: Check demo restoration JavaScript syntax
+        run: node --check jimdo-ready/budget/panel-restore.js
+      - name: Install pinned local Workers test runtime
+        run: npm ci --prefix jimdo-ready/audit/tooling
+      - name: Exercise actual Workers runtime and HTMLRewriter without deployment
+        run: node jimdo-ready/audit/edge_runtime.cjs

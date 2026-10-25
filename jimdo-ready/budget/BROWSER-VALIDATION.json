@@ -1,0 +1,485 @@
+{
+  "source": "Live-confirmed V6.7.14 with corrected logo",
+  "candidate": "V6.7.15 Inhaltsbudget",
+  "browser": "Chromium 131.0.6778.33",
+  "fixture": "isolated full Jimdo-layout snapshot; public assets downloaded with normal TLS validation and fulfilled from a local cache",
+  "routes": 26,
+  "viewports": [
+    1440,
+    390
+  ],
+  "comparisons": 52,
+  "screenshot_pairs": 14,
+  "page_errors": [],
+  "asset_failures": [],
+  "results": [
+    {
+      "path": "/",
+      "width": 1440,
+      "visible_heading": "Ideen werden digital.",
+      "height": 6073,
+      "links": 46,
+      "controls": 15,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=blumen-boutique",
+      "width": 1440,
+      "visible_heading": "Die Blumen Boutique.",
+      "height": 2238,
+      "links": 20,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=3x3-home-fit",
+      "width": 1440,
+      "visible_heading": "3x3 HOME FIT.",
+      "height": 1551,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=sunny-xxl-dogge",
+      "width": 1440,
+      "visible_heading": "Sunny XXL Dogge.",
+      "height": 1546,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=familienkreis",
+      "width": 1440,
+      "visible_heading": "FamilienKreis.",
+      "height": 1551,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=hey-malle",
+      "width": 1440,
+      "visible_heading": "HEY MALLE.",
+      "height": 1561,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=release-buddy",
+      "width": 1440,
+      "visible_heading": "Release Buddy.",
+      "height": 1526,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=bottroper-doener-pizza",
+      "width": 1440,
+      "visible_heading": "Bottroper Döner & Pizza.",
+      "height": 1567,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=bratwurst-mit-mir",
+      "width": 1440,
+      "visible_heading": "Bratwurst mit mir.",
+      "height": 1533,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=kochheld",
+      "width": 1440,
+      "visible_heading": "Kochheld.",
+      "height": 1550,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=ristorante-pizzeria-la-rosa",
+      "width": 1440,
+      "visible_heading": "Ristorante Pizzeria La Rosa.",
+      "height": 1431,
+      "links": 17,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=olympia-bottrop",
+      "width": 1440,
+      "visible_heading": "Restaurant Olympia.",
+      "height": 1480,
+      "links": 17,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=digital-publishing",
+      "width": 1440,
+      "visible_heading": "Bücher & digitale Produkte. Eigenständig entwickelt.",
+      "height": 6022,
+      "links": 34,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/#3x3homefit",
+      "width": 1440,
+      "visible_heading": "Dein Training. Dein Zuhause. Dein Platz.",
+      "height": 11663,
+      "links": 29,
+      "controls": 12,
+      "identical": true
+    },
+    {
+      "path": "/#sunnyxxl",
+      "width": 1440,
+      "visible_heading": "Groß. Gelb. Sunny.",
+      "height": 4191,
+      "links": 22,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/#familienkreis",
+      "width": 1440,
+      "visible_heading": "Alles, was Familie bewegt.",
+      "height": 6290,
+      "links": 24,
+      "controls": 5,
+      "identical": true
+    },
+    {
+      "path": "/#heymalle",
+      "width": 1440,
+      "visible_heading": "Deine Playa. Deine Leute. Dein Moment.",
+      "height": 6692,
+      "links": 24,
+      "controls": 5,
+      "identical": true
+    },
+    {
+      "path": "/#releasebuddy",
+      "width": 1440,
+      "visible_heading": "Hör, was neu ist.",
+      "height": 7198,
+      "links": 22,
+      "controls": 7,
+      "identical": true
+    },
+    {
+      "path": "/#bottroperdoener",
+      "width": 1440,
+      "visible_heading": "Bottroper Döner & Pizza",
+      "height": 5403,
+      "links": 34,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/#bratwurstmitmir",
+      "width": 1440,
+      "visible_heading": "Mehr Wurst. Mehr Freunde.",
+      "height": 8896,
+      "links": 23,
+      "controls": 6,
+      "identical": true
+    },
+    {
+      "path": "/#Kochheld",
+      "width": 1440,
+      "visible_heading": "Noch was da? Mach was Gutes draus.",
+      "height": 3860,
+      "links": 15,
+      "controls": 4,
+      "identical": true
+    },
+    {
+      "path": "/#larosabottrop",
+      "width": 1440,
+      "visible_heading": "Pizza. Pasta. La Rosa.",
+      "height": 4912,
+      "links": 29,
+      "controls": 28,
+      "identical": true
+    },
+    {
+      "path": "/#olympiabottrop",
+      "width": 1440,
+      "visible_heading": "Griechisch. Gesellig. Grafenwald.",
+      "height": 6230,
+      "links": 38,
+      "controls": 19,
+      "identical": true
+    },
+    {
+      "path": "/#digitalpublishing",
+      "width": 1440,
+      "visible_heading": "Bücher & digitale Produkte. Eigenständig entwickelt.",
+      "height": 6022,
+      "links": 34,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/about/",
+      "width": 1440,
+      "visible_heading": "Impressum",
+      "height": 1681,
+      "links": 18,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/j/privacy",
+      "width": 1440,
+      "visible_heading": "Datenschutzerklärung",
+      "height": 3947,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "visible_heading": "Ideen werden digital.",
+      "height": 9456,
+      "links": 46,
+      "controls": 15,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=blumen-boutique",
+      "width": 390,
+      "visible_heading": "Die Blumen Boutique.",
+      "height": 3651,
+      "links": 15,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=3x3-home-fit",
+      "width": 390,
+      "visible_heading": "3x3 HOME FIT.",
+      "height": 2609,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=sunny-xxl-dogge",
+      "width": 390,
+      "visible_heading": "Sunny XXL Dogge.",
+      "height": 2520,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=familienkreis",
+      "width": 390,
+      "visible_heading": "FamilienKreis.",
+      "height": 2535,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=hey-malle",
+      "width": 390,
+      "visible_heading": "HEY MALLE.",
+      "height": 2521,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=release-buddy",
+      "width": 390,
+      "visible_heading": "Release Buddy.",
+      "height": 2578,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=bottroper-doener-pizza",
+      "width": 390,
+      "visible_heading": "Bottroper Döner & Pizza.",
+      "height": 2567,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=bratwurst-mit-mir",
+      "width": 390,
+      "visible_heading": "Bratwurst mit mir.",
+      "height": 2674,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=kochheld",
+      "width": 390,
+      "visible_heading": "Kochheld.",
+      "height": 2554,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=ristorante-pizzeria-la-rosa",
+      "width": 390,
+      "visible_heading": "Ristorante Pizzeria La Rosa.",
+      "height": 2374,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=olympia-bottrop",
+      "width": 390,
+      "visible_heading": "Restaurant Olympia.",
+      "height": 2555,
+      "links": 14,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/?projekt=digital-publishing",
+      "width": 390,
+      "visible_heading": "Bücher & digitale Produkte. Eigenständig entwickelt.",
+      "height": 10913,
+      "links": 30,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/#3x3homefit",
+      "width": 390,
+      "visible_heading": "Dein Training. Dein Zuhause. Dein Platz.",
+      "height": 18021,
+      "links": 29,
+      "controls": 12,
+      "identical": true
+    },
+    {
+      "path": "/#sunnyxxl",
+      "width": 390,
+      "visible_heading": "Groß. Gelb. Sunny.",
+      "height": 5541,
+      "links": 24,
+      "controls": 1,
+      "identical": true
+    },
+    {
+      "path": "/#familienkreis",
+      "width": 390,
+      "visible_heading": "Alles, was Familie bewegt.",
+      "height": 7361,
+      "links": 24,
+      "controls": 5,
+      "identical": true
+    },
+    {
+      "path": "/#heymalle",
+      "width": 390,
+      "visible_heading": "Deine Playa. Deine Leute. Dein Moment.",
+      "height": 8906,
+      "links": 18,
+      "controls": 5,
+      "identical": true
+    },
+    {
+      "path": "/#releasebuddy",
+      "width": 390,
+      "visible_heading": "Hör, was neu ist.",
+      "height": 11502,
+      "links": 22,
+      "controls": 7,
+      "identical": true
+    },
+    {
+      "path": "/#bottroperdoener",
+      "width": 390,
+      "visible_heading": "Bottroper Döner & Pizza",
+      "height": 5737,
+      "links": 36,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/#bratwurstmitmir",
+      "width": 390,
+      "visible_heading": "Mehr Wurst. Mehr Freunde.",
+      "height": 14313,
+      "links": 19,
+      "controls": 6,
+      "identical": true
+    },
+    {
+      "path": "/#Kochheld",
+      "width": 390,
+      "visible_heading": "Noch was da? Mach was Gutes draus.",
+      "height": 6315,
+      "links": 15,
+      "controls": 4,
+      "identical": true
+    },
+    {
+      "path": "/#larosabottrop",
+      "width": 390,
+      "visible_heading": "Pizza. Pasta. La Rosa.",
+      "height": 6297,
+      "links": 29,
+      "controls": 29,
+      "identical": true
+    },
+    {
+      "path": "/#olympiabottrop",
+      "width": 390,
+      "visible_heading": "Griechisch. Gesellig. Grafenwald.",
+      "height": 8486,
+      "links": 36,
+      "controls": 20,
+      "identical": true
+    },
+    {
+      "path": "/#digitalpublishing",
+      "width": 390,
+      "visible_heading": "Bücher & digitale Produkte. Eigenständig entwickelt.",
+      "height": 10913,
+      "links": 30,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/about/",
+      "width": 390,
+      "visible_heading": "Impressum",
+      "height": 1507,
+      "links": 18,
+      "controls": 0,
+      "identical": true
+    },
+    {
+      "path": "/j/privacy",
+      "width": 390,
+      "visible_heading": "Datenschutzerklärung",
+      "height": 7165,
+      "links": 19,
+      "controls": 0,
+      "identical": true
+    }
+  ]
+}

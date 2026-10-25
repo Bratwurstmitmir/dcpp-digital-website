@@ -1,0 +1,18 @@
+[
+  {
+    "name": "dcpp-digital.md",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 15410,
+    "matches_approved_snapshot": true,
+    "commit": "9b43ade90b83a51359f9cca6a08cb3cda38e6b35"
+  },
+  {
+    "name": "llms.txt",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 4801,
+    "matches_approved_snapshot": true,
+    "commit": "9b43ade90b83a51359f9cca6a08cb3cda38e6b35"
+  }
+]
