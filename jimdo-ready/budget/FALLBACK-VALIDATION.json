@@ -1,6 +1,6 @@
 {
   "browser": "Chromium 131.0.6778.33",
-  "checks": 13,
+  "checks": 15,
   "comparisons": [
     {
       "case": "visible content without JavaScript",
@@ -68,11 +68,21 @@
     },
     {
       "case": "damaged installation recovers to readable business page",
-      "path": "/#larosabottrop",
+      "path": "/#3x3homefit",
       "passed": true
     },
     {
       "case": "damaged installation recovers to readable business page",
+      "path": "/#heymalle",
+      "passed": true
+    },
+    {
+      "case": "unpackaged content still works with damaged app data",
+      "path": "/#larosabottrop",
+      "passed": true
+    },
+    {
+      "case": "unpackaged content still works with damaged app data",
       "path": "/?projekt=digital-publishing",
       "passed": true
     }

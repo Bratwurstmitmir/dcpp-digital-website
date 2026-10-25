@@ -1,49 +1,54 @@
 {
-  "kind": "Model using fresh public responses, not verification of a deployed V6.7.15",
+  "kind": "Model on fresh public responses; not verification of deployed V6.7.15",
   "results": [
     {
       "url": "https://www.dcpp-digital.de/",
       "status": 200,
-      "panel_roots": 11,
+      "packaged_app_panels": 5,
       "current_extracted_characters": 120133,
-      "modeled_characters_without_inactive_panels_in_initial_text": 46275,
+      "modeled_characters_with_app_panels_packaged": 85288,
       "modeled_budget_passes": true,
+      "publishing_and_restaurant_content_retained": true,
       "native_content_cleanup_not_claimed": true
     },
     {
       "url": "https://www.dcpp-digital.de/about/",
       "status": 200,
-      "panel_roots": 11,
+      "packaged_app_panels": 5,
       "current_extracted_characters": 119070,
-      "modeled_characters_without_inactive_panels_in_initial_text": 45212,
+      "modeled_characters_with_app_panels_packaged": 84225,
       "modeled_budget_passes": true,
+      "publishing_and_restaurant_content_retained": true,
       "native_content_cleanup_not_claimed": true
     },
     {
       "url": "https://www.dcpp-digital.de/kurse/",
       "status": 200,
-      "panel_roots": 11,
+      "packaged_app_panels": 5,
       "current_extracted_characters": 121365,
-      "modeled_characters_without_inactive_panels_in_initial_text": 47507,
+      "modeled_characters_with_app_panels_packaged": 86520,
       "modeled_budget_passes": true,
+      "publishing_and_restaurant_content_retained": true,
       "native_content_cleanup_not_claimed": true
     },
     {
       "url": "https://www.dcpp-digital.de/kontakt/",
       "status": 200,
-      "panel_roots": 11,
+      "packaged_app_panels": 5,
       "current_extracted_characters": 119332,
-      "modeled_characters_without_inactive_panels_in_initial_text": 45474,
+      "modeled_characters_with_app_panels_packaged": 84487,
       "modeled_budget_passes": true,
+      "publishing_and_restaurant_content_retained": true,
       "native_content_cleanup_not_claimed": true
     },
     {
       "url": "https://www.dcpp-digital.de/%C3%BCber-uns/",
       "status": 200,
-      "panel_roots": 11,
+      "packaged_app_panels": 5,
       "current_extracted_characters": 119795,
-      "modeled_characters_without_inactive_panels_in_initial_text": 45937,
+      "modeled_characters_with_app_panels_packaged": 84950,
       "modeled_budget_passes": true,
+      "publishing_and_restaurant_content_retained": true,
       "native_content_cleanup_not_claimed": true
     }
   ]

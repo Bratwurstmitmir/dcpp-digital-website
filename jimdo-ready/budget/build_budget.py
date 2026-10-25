@@ -46,13 +46,17 @@ class Panels(HTMLParser):
             self.depth -= 1
 
 
-def build(source, restore_script):
+def build(source, restore_script, selected_ids=None):
     if 'id="dcpp-panel-data"' in source:
         raise ValueError('The source is already a deferred-panel version')
     parser = Panels(source)
     parser.feed(source)
     if parser.current or not parser.spans:
         raise ValueError('Incomplete or missing panel roots')
+    if selected_ids is not None:
+        parser.spans = [span for span in parser.spans if span[0] in selected_ids]
+        if {span[0] for span in parser.spans} != set(selected_ids):
+            raise ValueError('A selected panel root is missing')
     panels = [{'id': identifier, 'html': source[start:end]} for identifier, start, end in parser.spans]
     output = source
     for identifier, start, end in reversed(parser.spans):
@@ -74,7 +78,8 @@ if __name__ == '__main__':
     root = Path(__file__).resolve().parent
     source_path = next((root / 'source').glob('*-HTML-*-1zu1.txt'))
     source = source_path.read_text()
-    output, panels = build(source, (root / 'panel-restore.js').read_text())
+    selected = {'dcpp-microsite-3x3', 'dcpp-microsite-familie', 'dcpp-microsite-heymalle', 'dcpp-microsite-releasebuddy', 'dcpp-microsite-bratwurstmitmir'}
+    output, panels = build(source, (root / 'panel-restore.js').read_text(), selected)
     target = root / 'candidate/DCPP-Digital-HTML-V6.7.15-INHALTSBUDGET-1zu1.txt'
     target.write_text(output)
     (root / 'PANELS.json').write_text(json.dumps({'panels': [{'id': p['id'], 'characters': len(p['html'])} for p in panels], 'source_bytes': source_path.stat().st_size, 'candidate_bytes': target.stat().st_size}, ensure_ascii=False, indent=2) + '\n')

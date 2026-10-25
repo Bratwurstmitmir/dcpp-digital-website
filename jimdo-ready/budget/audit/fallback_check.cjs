@@ -32,7 +32,7 @@ async function main(){
   const damaged=good.replace(/(<script id="dcpp-panel-data" type="application\/json">)[\s\S]*?(<\/script>)/,'$1{invalid JSON$2');
   const fault=await context(browser,'candidate',390,()=>damaged);
   try{
-   for(const target of ['/#larosabottrop','/?projekt=digital-publishing']){
+   for(const target of ['/#3x3homefit','/#heymalle']){
     const page=await fault.newPage();
     await page.goto(base+target,{waitUntil:'domcontentloaded'}).catch(e=>{if(!/ERR_ABORTED|interrupted/.test(String(e)))throw e;});
     await page.waitForURL(base+'/#dcpp-projects',{waitUntil:'domcontentloaded'});
@@ -40,6 +40,12 @@ async function main(){
     assert.equal(await page.locator('#dcpp-home-content').isVisible(),true);
     assert.match((await readState(page)).h1.join(' '),/Ideen werden/);
     comparisons.push({case:'damaged installation recovers to readable business page',path:target,passed:true});await page.close();
+   }
+   for(const [target,selector] of [['/#larosabottrop','#lr-site'],['/?projekt=digital-publishing','#dcpp-microsite-digitalpublishing']]){
+    const page=await fault.newPage();
+    await page.goto(base+target,{waitUntil:'domcontentloaded'});await page.waitForLoadState('networkidle');
+    assert.equal(await page.locator(selector).isVisible(),true);
+    comparisons.push({case:'unpackaged content still works with damaged app data',path:target,passed:true});await page.close();
    }
   }finally{await fault.close();}
  }finally{await browser.close();}

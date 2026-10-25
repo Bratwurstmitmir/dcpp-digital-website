@@ -35,8 +35,7 @@
         if (window.console) console.error('DCPP panel restoration failed:', error);
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
         var hash = window.location.hash || '';
-        var publishing = /(?:^|[?&])projekt=digital-publishing(?:&|$)/.test(window.location.search);
-        if (path === '/' && (publishing || /^#(?:3x3homefit|sunnyxxl|familienkreis|heymalle|releasebuddy|bottroperdoener|bratwurstmitmir|Kochheld|larosabottrop|lr-|olympiabottrop|oly-|digitalpublishing)/i.test(hash))) {
+        if (path === '/' && /^#(?:3x3homefit|familienkreis|heymalle|releasebuddy|bratwurstmitmir)/i.test(hash)) {
             window.location.replace('/#dcpp-projects');
         }
     }

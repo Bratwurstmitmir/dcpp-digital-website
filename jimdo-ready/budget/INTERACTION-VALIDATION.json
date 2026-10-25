@@ -22,5 +22,5 @@
     "Datenschutz"
   ],
   "additional_candidate_legacy_redirects": 3,
-  "note": "Checkpoint scrolling is normalized to avoid timing-dependent floating-button visibility. Map frames are test fixtures; no live maps, bookings, purchases or phone calls were triggered."
+  "note": "Visible images are decoded before comparing full-page geometry. The scroll-dependent floating button is hidden only for stable content snapshots; its actual click-to-top behavior is separately tested after scrolling to 900px. Map frames are fixtures; no live maps, bookings, purchases or phone calls were triggered."
 }

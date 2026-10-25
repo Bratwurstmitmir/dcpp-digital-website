@@ -7,11 +7,21 @@ async function exercise(browser,mode){
  p.on('pageerror',e=>errors.push(e.message));await p.clock.setFixedTime(new Date('2026-10-24T18:00:00Z'));
  async function go(url){await p.goto(base+url,{waitUntil:'domcontentloaded'});await p.waitForLoadState('networkidle',{timeout:30000});}
  async function step(name){
-  await p.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
-  await p.waitForFunction(()=>window.scrollY<5);
-  await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  // Normalize lazy images in both fixtures before comparing page geometry.
+  // Otherwise an off-screen dish image can finish loading between snapshots.
+  await p.evaluate(async()=>{
+   const images=[...document.images].filter(image=>{const r=image.getBoundingClientRect();return r.width>0&&r.height>0;});
+   for(const image of images)image.loading='eager';
+   await Promise.all(images.map(image=>image.decode().catch(()=>{})));
+  });
   await settleVisibleLayout(p);
-  const state=await readState(p);steps.push({name,state});console.log(mode+' '+name);
+  // Compare scroll-independent content. The actual floating-button click is
+  // tested separately below; its visibility intentionally follows scroll/focus.
+  const previousStyle=await p.locator('#dcpp-scroll-top').getAttribute('style');
+  await p.locator('#dcpp-scroll-top').evaluate(e=>e.style.setProperty('display','none','important'));
+  const state=await readState(p);
+  await p.locator('#dcpp-scroll-top').evaluate((e,style)=>{if(style===null)e.removeAttribute('style');else e.setAttribute('style',style);},previousStyle);
+  steps.push({name,state});console.log(mode+' '+name);
  }
  await go('/');
  if(mode==='candidate'){
@@ -96,6 +106,6 @@ async function exercise(browser,mode){
   assert.deepEqual(y,x,'Interaction differs: '+x.name);
  }
  await browser.close();
- fs.writeFileSync(path.join(__dirname,'../INTERACTION-VALIDATION.json'),JSON.stringify({steps:a.length,modes:['baseline','candidate'],all_identical:true,validated:a.map(x=>x.name),additional_candidate_legacy_redirects:3,note:'Checkpoint scrolling is normalized to avoid timing-dependent floating-button visibility. Map frames are test fixtures; no live maps, bookings, purchases or phone calls were triggered.'},null,2)+'\n');
+ fs.writeFileSync(path.join(__dirname,'../INTERACTION-VALIDATION.json'),JSON.stringify({steps:a.length,modes:['baseline','candidate'],all_identical:true,validated:a.map(x=>x.name),additional_candidate_legacy_redirects:3,note:'Visible images are decoded before comparing full-page geometry. The scroll-dependent floating button is hidden only for stable content snapshots; its actual click-to-top behavior is separately tested after scrolling to 900px. Map frames are fixtures; no live maps, bookings, purchases or phone calls were triggered.'},null,2)+'\n');
  console.log('INTERACTION_COMPARISON_PASSED '+a.length+' behaviors');
 })().catch(e=>{console.error(e);process.exit(1)});

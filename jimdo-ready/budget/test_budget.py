@@ -44,6 +44,15 @@ class BudgetTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 build(source, '')
 
+    def test_selective_packaging_keeps_publishing_and_other_panels_as_html(self):
+        app = '<div id="dcpp-microsite-app"><h1>App</h1></div>'
+        publishing = '<div id="dcpp-microsite-publishing"><a href="https://example.org/book">Buch</a></div>'
+        result, data = build(app + publishing, '', {'dcpp-microsite-app'})
+        self.assertEqual([p['id'] for p in data], ['dcpp-microsite-app'])
+        self.assertIn(publishing, result)
+        with self.assertRaisesRegex(ValueError, 'selected panel'):
+            build(app, '', {'dcpp-microsite-missing'})
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,7 @@
 {
   "baseline": "live-confirmed V6.7.14",
   "candidate": "V6.7.15-INHALTSBUDGET",
-  "payload_panels": 11,
+  "payload_panels": 5,
   "round_trip_dom_equal": true,
   "all_source_links_preserved": 596,
   "all_source_ids_preserved": 247,
@@ -14,6 +14,14 @@
   ],
   "css_and_head_byte_identical": true,
   "html_bytes_before": 549596,
-  "html_bytes_after": 682453,
-  "new_sha256": "97328f255883960d7ff779cf943b9e048d420e7a81cb05a8691cb6af79423d40"
+  "html_bytes_after": 598651,
+  "new_sha256": "aa241f422df2574b5c187051944f1d869533d5054ef5489d03ee384ea4e8cab4",
+  "ordinary_html_panels_retained": [
+    "digitalpublishing",
+    "sunny",
+    "bottroperdoener",
+    "kochheld",
+    "larosa",
+    "olympia"
+  ]
 }
